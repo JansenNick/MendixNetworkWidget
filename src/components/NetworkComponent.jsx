@@ -173,22 +173,27 @@ class NetworkComponent extends Component {
 
             window.__NetworkGraph = this.network;
 
-            this.network.on("selectNode", (params) => {
-                var selectedNodeId = params.nodes[0];
-                if (selectedNodeId && this.network.body.nodes[selectedNodeId]) {
-                    this.network.body.nodes[selectedNodeId].setOptions({
-                        size: 65
-                    });
-                }
+            this.network.on("selectNode", (params) => {  
+              var selectedNodeId = params.nodes[0];  
+              if (selectedNodeId && this.network.body.nodes[selectedNodeId]) {
+                this.network.body.nodes[selectedNodeId].setOptions({
+                  size: 65  
+                });  
+              }
             });
 
             this.network.on("dragStart", (params) => {
-                var selectedNodeId = params.nodes[0];
-                if (selectedNodeId && this.network.body.nodes[selectedNodeId]) {
-                    this.network.body.nodes[selectedNodeId].setOptions({
-                        size: 65
-                    });
-                }
+              var selectedNodeId = params.nodes[0];
+              if (selectedNodeId && this.network.body.nodes[selectedNodeId]) {
+                for(var i = 0 ; i < this.network.body.nodeIndices.length ; i++){
+                  this.network.body.nodes[this.network.body.nodeIndices[i]].setOptions({
+                    size: 40
+                  })
+                };
+                this.network.body.nodes[selectedNodeId].setOptions({
+                  size: 65
+                });
+              }
             });
 
             this.network.on("deselectNode", (params) => {
