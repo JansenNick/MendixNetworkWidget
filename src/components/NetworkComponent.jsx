@@ -126,7 +126,7 @@ class NetworkComponent extends Component {
                     },
                     mass: nodeMassVar,
                     borderWidth: nodeBorderWidthVar,
-                    image: nodeImageVar,
+                    image: "data:image/png;base64, " + nodeImageVar,
                     size: nodeSizeVar
                 }
             });
